@@ -3,6 +3,7 @@ package application;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+import chess.ChessMatch;
 import chess.ChessPiece;
 import chess.ChessPosition;
 import chess.Color;
@@ -13,7 +14,7 @@ public class UI {
 
 	// Reset
 	public static final String ANSI_RESET = "\u001B[0m";
-	
+
 	// Regular Colors
 	public static final String ANSI_BLACK = "\u001B[30m";
 	public static final String ANSI_RED = "\u001B[31m";
@@ -24,17 +25,17 @@ public class UI {
 	public static final String ANSI_CYAN = "\u001B[36m";
 	public static final String ANSI_WHITE = "\u001B[37m";
 
-    // Bold High Intensity
-    public static final String BLACK_BOLD_BRIGHT = "\033[1;90m";
-    public static final String RED_BOLD_BRIGHT = "\033[1;91m";
-    public static final String GREEN_BOLD_BRIGHT = "\033[1;92m";
-    public static final String YELLOW_BOLD_BRIGHT = "\033[1;93m";
-    public static final String BLUE_BOLD_BRIGHT = "\033[1;94m";
-    public static final String PURPLE_BOLD_BRIGHT = "\033[1;95m";
-    public static final String CYAN_BOLD_BRIGHT = "\033[1;96m";
-    public static final String WHITE_BOLD_BRIGHT = "\033[1;97m";
-	
-    // Background
+	// Bold High Intensity
+	public static final String BLACK_BOLD_BRIGHT = "\033[1;90m";
+	public static final String RED_BOLD_BRIGHT = "\033[1;91m";
+	public static final String GREEN_BOLD_BRIGHT = "\033[1;92m";
+	public static final String YELLOW_BOLD_BRIGHT = "\033[1;93m";
+	public static final String BLUE_BOLD_BRIGHT = "\033[1;94m";
+	public static final String PURPLE_BOLD_BRIGHT = "\033[1;95m";
+	public static final String CYAN_BOLD_BRIGHT = "\033[1;96m";
+	public static final String WHITE_BOLD_BRIGHT = "\033[1;97m";
+
+	// Background
 	public static final String ANSI_BLACK_BACKGROUND = "\u001B[40m";
 	public static final String ANSI_RED_BACKGROUND = "\u001B[41m";
 	public static final String ANSI_GREEN_BACKGROUND = "\u001B[42m";
@@ -78,6 +79,17 @@ public class UI {
 				System.out.print(YELLOW_BOLD_BRIGHT + piece + ANSI_RESET);
 			}
 		}
+	}
+
+	public static void printMatch(ChessMatch chessMatch, String[] args) {
+		if (args.length > 0) {
+			printTabBoard(chessMatch.getPieces());
+		} else {
+			printBoard(chessMatch.getPieces());
+		}
+		System.out.println();
+		System.out.println("Turn: " + chessMatch.getTurn());
+		System.out.println("Waiting player: " + chessMatch.getCurrentPlayer());
 	}
 
 	public static void printBoard(ChessPiece[][] pieces) {
