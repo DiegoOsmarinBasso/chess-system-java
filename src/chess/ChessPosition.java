@@ -23,7 +23,7 @@ public class ChessPosition {
 		return row;
 	}
 
-	protected Position toPosition() {
+	public Position toPosition() {
 		return new Position(ChessMatch.BOARD_ROWS - row, column - ChessMatch.COLUMN_INITIAL_LETTER);
 	}
 
